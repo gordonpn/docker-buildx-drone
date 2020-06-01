@@ -1,0 +1,5 @@
+.dockerignore
+.drone.yml
+.gitignore
+LICENSE
+README.md

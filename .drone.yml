@@ -1,0 +1,75 @@
+---
+kind: pipeline
+type: docker
+name: notification
+
+trigger:
+  event: [ push, pull_request ]
+
+steps:
+  - name: slack before
+    image: plugins/slack
+    settings:
+      channel: drone-ci
+      template: >
+        {{build.event}} on branch {{build.branch}} from repo {{repo.name}}
+
+        build #{{build.number}} started!
+
+        {{build.link}}
+      webhook:
+        from_secret: SLACK_WEBHOOK_URL
+---
+kind: pipeline
+type: docker
+name: build and publish docker image
+
+trigger:
+  event: [ push, pull_request ]
+
+steps:
+  - name: publish
+    image: docker
+    environment:
+      DOCKER_TOKEN:
+        from_secret: DOCKER_TOKEN
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - echo $DOCKER_TOKEN | docker login -u gordonpn --password-stdin
+      - docker build -t gordonpn/docker-buildx-drone:latest .
+      - docker push gordonpn/docker-buildx-drone:latest
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+---
+kind: pipeline
+type: docker
+name: notification after
+
+trigger:
+  event: [ push, pull_request ]
+
+steps:
+  - name: slack after
+    image: plugins/slack
+    failure: ignore
+    settings:
+      channel: drone-ci
+      template: >
+        {{repo.name}}:
+        {{#success build.status}}
+        build #{{build.number}} succeeded
+        {{else}}
+        build #{{build.number}} failed
+        {{/success}}
+      webhook:
+        from_secret: SLACK_WEBHOOK_URL
+    when:
+      status: [ success, failure ]
+
+depends_on:
+  - build and publish docker image
