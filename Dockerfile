@@ -1,4 +1,5 @@
 FROM docker:latest
+LABEL maintainer="contact@gordon-pn.com"
 ARG BUILDX_VERSION
 ENV DOCKER_CLI_EXPERIMENTAL=enabled
 RUN apk add --no-cache \
