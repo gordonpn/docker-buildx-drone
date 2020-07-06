@@ -38,7 +38,7 @@ steps:
         path: /var/run/docker.sock
     commands:
       - echo $DOCKER_TOKEN | docker login -u gordonpn --password-stdin
-      - docker build -t gordonpn/docker-buildx-drone:latest .
+      - docker build --no-cache -t gordonpn/docker-buildx-drone:latest .
       - docker push gordonpn/docker-buildx-drone:latest
 
 volumes:
