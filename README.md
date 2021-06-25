@@ -3,8 +3,15 @@
 [![Docker Image](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/gordonpn/docker-buildx-drone)
 [![Build Status](https://drone.gordon-pn.com/api/badges/gordonpn/docker-buildx-drone/status.svg)](https://drone.gordon-pn.com/gordonpn/docker-buildx-drone)
 [![License](https://badgen.net/github/license/gordonpn/docker-buildx-drone)](./LICENSE)
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gordonpn)
+
+## Deprecated
+
+Buildx now comes bundled with Docker Engine and this image is no longer needed.
+
+<https://docs.docker.com/buildx/working-with-buildx/>
 
 ## Motivation
 
@@ -73,7 +80,7 @@ docker build --build-arg BUILDX_VERSION=v0.4.0 .
 
 ## Authors
 
-Myself [@gordonpn](https://github.com/gordonpn)
+[@gordonpn](https://github.com/gordonpn)
 
 ## License
 
