@@ -1,7 +1,8 @@
 repo_name: gordonpn/docker-buildx-drone
 report_id: a4976d2d148bf3ecf2ea3c45d9db2fc4
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T13:19:16+00:00'
+timestamp: '2024-01-04T14:54:00+00:00'
 requested_by: gordonpn
 provider: github
 branch: master
@@ -16,6 +17,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/gordonpn/docker-buildx-drone
   detection_source: Repo Metadata
 - name: Drone.io
   description: Open source continuous integration platform built on Docker
@@ -25,6 +27,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/668/R_wMcCqN_400x400.png
+  detection_source_url: https://github.com/gordonpn/docker-buildx-drone/blob/master/.drone.yml
   detection_source: ".drone.yml"
   last_updated_by: Gordon Pham-Nguyen
   last_updated_on: 2020-07-06 14:06:11.000000000 Z
@@ -36,4 +39,5 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/gordonpn/docker-buildx-drone
   detection_source: Repo Metadata
